@@ -41,37 +41,37 @@ static int fingerprint_enroll(struct fingerprint_device __unused *dev,
                                 const hw_auth_token_t __unused *hat,
                                 uint32_t __unused gid,
                                 uint32_t __unused timeout_sec) {
-    return FINGERPRINT_ERROR;
+    return 0;
 }
 
 static uint64_t fingerprint_get_auth_id(struct fingerprint_device __unused *dev) {
-    return FINGERPRINT_ERROR;
+    return 0;
 }
 
 static int fingerprint_cancel(struct fingerprint_device __unused *dev) {
-    return FINGERPRINT_ERROR;
+    return 0;
 }
 
 static int fingerprint_remove(struct fingerprint_device __unused *dev,
                                 uint32_t __unused gid, uint32_t __unused fid) {
-    return FINGERPRINT_ERROR;
+    return 0;
 }
 
 static int fingerprint_set_active_group(struct fingerprint_device __unused *dev,
                                         uint32_t __unused gid, const char __unused *store_path) {
-    return FINGERPRINT_ERROR;
+    return 0;
 }
 
 static int fingerprint_authenticate(struct fingerprint_device __unused *dev,
                                     uint64_t __unused operation_id, __unused uint32_t gid) {
-    return FINGERPRINT_ERROR;
+    return 0;
 }
 
 static int set_notify_callback(struct fingerprint_device *dev,
                                 fingerprint_notify_t notify) {
     /* Decorate with locks */
     dev->notify = notify;
-    return FINGERPRINT_ERROR;
+    return 0;
 }
 
 static int fingerprint_open(const hw_module_t* module, const char __unused *id,
