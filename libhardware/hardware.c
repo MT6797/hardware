@@ -188,9 +188,17 @@ int hw_get_module_by_class(const char *class_id, const char *inst,
 
         }
     }
+    memset(prop, 0, PATH_MAX);
+    strlcpy(prop, "default", PATH_MAX);
+    if(strcmp(name, "fingerprint") == 0)
+	{	
+	     if(access("/dev/madev0", R_OK) == 0)	
+	     	strlcpy(prop, "afs", PATH_MAX);
+	}
+   ALOGE("hw_get_module_by_class  name:%s, prop: %s",name,prop);
 
     /* Nothing found, try the default */
-    if (hw_module_exists(path, sizeof(path), name, "default") == 0) {
+    if (hw_module_exists(path, sizeof(path), name, prop) == 0) {
         goto found;
     }
 
