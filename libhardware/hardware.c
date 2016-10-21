@@ -192,8 +192,11 @@ int hw_get_module_by_class(const char *class_id, const char *inst,
     strlcpy(prop, "default", PATH_MAX);
     if(strcmp(name, "fingerprint") == 0)
 	{	
-	     if(access("/dev/madev0", R_OK) == 0)	
-	     	strlcpy(prop, "afs", PATH_MAX);
+	     if(access("/dev/madev0", R_OK) == 0){
+			strlcpy(prop, "afs", PATH_MAX);
+		 }else if(access("/dev/bl229x", R_OK) == 0)	{
+			strlcpy(prop, "btl", PATH_MAX);
+		 }  
 	}
    ALOGE("hw_get_module_by_class  name:%s, prop: %s",name,prop);
 
